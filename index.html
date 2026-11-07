@@ -29,7 +29,7 @@
 <section class="hero"><div class="eyebrow">FREE FIRE SETTINGS TOOL</div><h1>Find Your Perfect <span class="accent">Sensitivity</span></h1><p>Get a starting sensitivity setup tailored to your phone and play style. Adjust in-game for your own comfort.</p></section>
 <section class="panel"><h2>📱 Device & Play Style</h2><form id="generator"><div class="fields">
 <div><label for="brand">Phone Brand</label><select id="brand" required><option value="">Select your brand</option><option>Samsung</option><option>Apple iPhone</option><option>Xiaomi</option><option>Redmi</option><option>POCO</option><option>OPPO</option><option>Realme</option><option>Vivo</option><option>OnePlus</option><option>Huawei</option><option>Infinix</option><option>Tecno</option><option>Motorola</option><option>Other</option></select></div>
-<div><label for="model">Phone Model</label><input id="model" placeholder="e.g. iPhone 15 Pro Max" maxlength="80" required></div>
+<div><label for="model">Phone Model</label><input id="model" placeholder="e.g. iPhone 15 Pro Max" maxlength="80" list="modelSuggestions" required autocomplete="off"><datalist id="modelSuggestions"></datalist><p id="modelError" class="note hidden" role="alert" style="color:#ff9aa8;margin:6px 0 0"></p></div>
 <div><label for="ram">RAM</label><select id="ram"><option value="2">2 GB</option><option value="3">3 GB</option><option value="4" selected>4 GB</option><option value="6">6 GB</option><option value="8">8 GB</option><option value="12">12 GB</option><option value="16">16 GB+</option></select></div>
 <div><label for="hz">Refresh Rate</label><select id="hz"><option value="60">60 Hz</option><option value="90">90 Hz</option><option value="120">120 Hz</option><option value="144">144 Hz+</option></select></div>
 <div><label for="style">Play Style</label><select id="style"><option value="balanced">Balanced</option><option value="rush">Rush Player</option><option value="headshot">One Tap / Headshot</option><option value="sniper">Sniper</option></select></div>
@@ -85,8 +85,67 @@ function startProgress(device) {
     setProgress(Math.min(92, progress + step));
   }, 320);
 }
+// Suggestions and basic brand/model consistency checks (not a complete device database).
+const brandSelect = document.getElementById('brand');
+const modelInput = document.getElementById('model');
+const modelSuggestions = document.getElementById('modelSuggestions');
+const modelError = document.getElementById('modelError');
+const modelsByBrand = {
+  'Apple iPhone': ['iPhone 11','iPhone 12','iPhone 13','iPhone 13 Pro','iPhone 14','iPhone 14 Pro','iPhone 15','iPhone 15 Pro','iPhone 15 Pro Max','iPhone 16','iPhone 16 Pro','iPhone 16 Pro Max','iPhone 17','iPhone 17 Pro'],
+  'Samsung': ['Galaxy A14','Galaxy A15','Galaxy A16','Galaxy A25','Galaxy A35','Galaxy A54','Galaxy A55','Galaxy S21','Galaxy S22','Galaxy S23','Galaxy S24','Galaxy S24 Ultra','Galaxy S25','Galaxy S25 Ultra','Galaxy Z Flip6'],
+  'Xiaomi': ['Xiaomi 12','Xiaomi 13','Xiaomi 13T','Xiaomi 14','Xiaomi 14T','Xiaomi 15','Mi 11'],
+  'Redmi': ['Redmi Note 11','Redmi Note 12','Redmi Note 13','Redmi Note 13 Pro','Redmi Note 14','Redmi 12','Redmi 13'],
+  'POCO': ['POCO X3 Pro','POCO X5 Pro','POCO X6','POCO X6 Pro','POCO X7 Pro','POCO F5','POCO F6','POCO M6 Pro'],
+  'OPPO': ['OPPO A58','OPPO A78','OPPO Reno 10','OPPO Reno 11','OPPO Reno 12','OPPO Find X7'],
+  'Realme': ['Realme 9','Realme 10','Realme 11','Realme 12','Realme C55','Realme GT 6'],
+  'Vivo': ['Vivo Y17','Vivo Y27','Vivo Y36','Vivo V29','Vivo V30','Vivo X100'],
+  'OnePlus': ['OnePlus 9','OnePlus 10 Pro','OnePlus 11','OnePlus 12','OnePlus 13','OnePlus Nord 3'],
+  'Huawei': ['Huawei P30','Huawei P40','Huawei P50','Huawei P60','Huawei Nova 11','Huawei Mate 50'],
+  'Infinix': ['Infinix Hot 30','Infinix Hot 40','Infinix Hot 50','Infinix Note 30','Infinix Note 40','Infinix GT 20 Pro'],
+  'Tecno': ['Tecno Spark 10','Tecno Spark 20','Tecno Spark 30','Tecno Camon 20','Tecno Camon 30','Tecno Pova 6'],
+  'Motorola': ['Moto G54','Moto G84','Moto G Power','Motorola Edge 40','Motorola Edge 50','Moto G Stylus']
+};
+const brandPatterns = {
+  'Apple iPhone': /^iphone\s+(?:se(?:\s*\(?\d{4}\)?)?|(?:\d{1,2})(?:\s|$))/i,
+  'Samsung': /^(?:samsung\s+)?(?:galaxy\s+)?(?:[aszfm]\d{1,3}\b|galaxy\s+(?:[aszfm]\d{1,3}\b|note\s*\d+|z\s*(?:flip|fold)\s*\d*|s\d+)|note\s*\d+|z\s*(?:flip|fold)\s*\d*)/i,
+  'Xiaomi': /^(?:xiaomi|mi)\s+\d+/i,
+  'Redmi': /^(?:redmi\s+)?(?:note\s+\d+|redmi\s+\d+|\d{1,2}(?:[a-z]|\s|$))/i,
+  'POCO': /^(?:poco\s+)?[xfmc]\d+\b/i,
+  'OPPO': /^(?:oppo\s+)?(?:[af]\d+|reno\s*\d+|find\s*[xn]\d+)/i,
+  'Realme': /^(?:realme\s+)?(?:\d+|c\d+|gt\s*\d+|narzo\s*\d+)/i,
+  'Vivo': /^(?:vivo\s+)?[vyxts]\d+/i,
+  'OnePlus': /^(?:oneplus\s+)?(?:\d+|nord\s*\w+)/i,
+  'Huawei': /^(?:huawei\s+)?(?:p\d+|mate\s*\d+|nova\s*\d+|y\d+)/i,
+  'Infinix': /^(?:infinix\s+)?(?:hot\s*\d+|note\s*\d+|zero\s*\d+|gt\s*\d+|smart\s*\d+)/i,
+  'Tecno': /^(?:tecno\s+)?(?:spark\s*\d+|camon\s*\d+|pova\s*\d+|phantom\s*\w+)/i,
+  'Motorola': /^(?:motorola\s+)?(?:moto\s*[ge]\w+|edge\s*\d+|razr\s*\w+)/i
+};
+function validatePhoneModel() {
+  const brand = brandSelect.value;
+  const model = modelInput.value.trim();
+  const ok = !brand || !model || (brand === 'Other' ? /^[a-z][a-z0-9 +().-]*\d[a-z0-9 +().-]*$/i.test(model) :
+    (brandPatterns[brand]?.test(model) || modelsByBrand[brand]?.some(item => item.toLowerCase() === model.toLowerCase())));
+  modelInput.setCustomValidity(ok ? '' : 'Phone model does not match the selected brand.');
+  modelError.textContent = ok ? '' : 'This model does not match ' + brand + '. Try a model such as ' + (modelsByBrand[brand]?.[0] || 'your phone model') + '.';
+  modelError.classList.toggle('hidden', ok);
+  return ok;
+}
+brandSelect.addEventListener('change', () => {
+  modelInput.value = '';
+  modelSuggestions.replaceChildren();
+  (modelsByBrand[brandSelect.value] || []).forEach(model => {
+    const option = document.createElement('option');
+    option.value = model;
+    modelSuggestions.append(option);
+  });
+  modelInput.placeholder = (modelsByBrand[brandSelect.value] || [])[0] || 'Enter your phone model';
+  validatePhoneModel();
+});
+modelInput.addEventListener('input', validatePhoneModel);
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  if (!validatePhoneModel()) { modelInput.reportValidity(); return; }
   
 if (typeof gtag === 'function') {
   gtag('event', 'generate_click');

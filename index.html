@@ -36,7 +36,7 @@
 <div><label for="scale">Sensitivity Scale</label><select id="scale"><option value="200">0–200</option><option value="100">0–100</option></select></div>
 </div><button class="primary" type="submit">⚡ GENERATE SENSITIVITY</button></form><div id="loading" class="loading hidden" role="status" aria-live="polite"><div id="loadingTitle" class="loading-title">Finding your sensitivity...</div><div class="loading-track"><div id="loadingFill" class="loading-fill"></div></div><div class="loading-meta"><span id="loadingStep">Analyzing device...</span><strong id="loadingPercent">0%</strong></div></div><p class="note">Personalized starting recommendations based on your device details and play style. Adjust them in-game for your comfort.</p></section>
 <section class="panel hidden" id="output" aria-live="polite"><h2>🎯 Your Recommended Settings</h2><p id="deviceLabel" class="note"></p><div id="results" class="results"></div><div class="actions"><button id="copy" class="secondary" type="button">📋 Copy All Settings</button></div><p class="note">Fire Button Size is a percentage. DPI is optional; changing system display density can affect your entire phone. Test gradually in training mode.</p></section>
-<section class="panel premium-card" id="premium"><h2>👑 Premium Sensi</h2><div class="premium-price">€4.99 <span class="note">/ one generation</span></div><p>Get an additional Premium sensitivity recommendation tailored to your device and play style. Your payment must be verified before a Premium generation is unlocked.</p><a class="premium-link" href="/premium.html">👑 OPEN PREMIUM SENSI</a><p class="note">Secure checkout • One-time payment of €4.99 per Premium generation.</p></section></main><footer>© 2026 FF SENSI PRO. All rights reserved.</footer>
+<section class="panel premium-card" id="premium"><h2>👑 Premium Sensi</h2><div class="premium-price">€4.99 <span class="note">/ one generation</span></div><p>Get an additional Premium sensitivity recommendation tailored to your device and play style. Your payment must be verified before a Premium generation is unlocked.</p><a class="premium-link" href="/premium.html" onclick="if (typeof gtag === 'function') gtag('event', 'premium_click');">👑 OPEN PREMIUM SENSI</a><p class="note">Secure checkout • One-time payment of €4.99 per Premium generation.</p></section></main><footer>© 2026 FF SENSI PRO. All rights reserved.</footer>
 <script>
 const form = document.getElementById('generator');
 const output = document.getElementById('output');
@@ -143,6 +143,9 @@ if (typeof gtag === 'function') {
     document.getElementById('deviceLabel').textContent = `${brand} ${model} • ${ram} GB RAM • ${refreshRate} Hz • ${playStyle.toUpperCase()} • Estimated settings`;
     copyText = `FF SENSI PRO — ${brand} ${model}\n` + items.map(item => `${item.name}: ${item.value}${item.suffix}`).join('\n');
     copyButton.disabled = false;
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_success');
+    }
     clearInterval(progressTimer);
     setProgress(100);
     await new Promise(resolve => setTimeout(resolve, 450));

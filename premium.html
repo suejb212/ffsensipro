@@ -6,7 +6,37 @@
 <style>body{margin:0;background:radial-gradient(circle at top left,#172d54,#080d1c 65%);color:#edf4ff;font:16px system-ui}.wrap{max-width:760px;margin:40px auto;padding:20px}a{color:#35e5f5}.panel{background:#121a30;border:1px solid #344463;border-radius:20px;padding:28px}h1{font-size:clamp(30px,6vw,52px)}label{display:block;margin-top:16px}input,select{display:block;width:100%;box-sizing:border-box;padding:13px;margin-top:7px;background:#0b1326;color:white;border:1px solid #344463;border-radius:10px;font:inherit}button{width:100%;margin-top:25px;padding:16px;border:0;border-radius:10px;background:linear-gradient(90deg,#35e5f5,#a46aff);font-weight:800;cursor:pointer}button:disabled{opacity:.6}.muted{color:#a7b5d0}.result{margin-top:18px;white-space:pre-wrap;line-height:1.8}.hidden{display:none}</style>
 </head>
 <body><div class="wrap"><nav><a href="/">← Home / Free Sensi</a></nav><h1>👑 Premium Sensi</h1><p class="muted">👑 Unlock Premium Sensitivity for just €4.99! Get personalized settings tailored to your phone model and play style.</p>
-<section class="panel"><form id="form">
+<section class="panel">
+
+<div id="coming-soon" style="text-align:center;padding:35px 10px">
+  <div style="font-size:65px">👑</div>
+
+  <h2 style="font-size:36px;margin:15px 0">
+    Premium Sensi — Coming Soon
+  </h2>
+
+  <p class="muted" style="line-height:1.8">
+    We're preparing something special!
+    Personalized Premium Sensitivity is launching soon.
+  </p>
+
+  <p style="font-size:24px;font-weight:800;color:#35e5f5">
+    €4.99
+  </p>
+
+  <p class="muted">
+    Stay tuned. We're almost ready! 🚀
+  </p>
+
+  <a href="/" style="display:inline-block;margin-top:20px;
+    padding:14px 25px;border-radius:10px;
+    background:linear-gradient(90deg,#35e5f5,#a46aff);
+    color:#08101e;text-decoration:none;font-weight:800">
+    Try Free Sensi
+  </a>
+</div>
+
+<form id="form" class="hidden">
 <label>Phone brand<select name="brand" id="brand" required><option value="">Select phone brand</option></select></label>
 <label>Phone model<select name="model" id="model" required disabled><option value="">Select a brand first</option></select></label>
 <label>Play style<select name="style"><option value="balanced">Balanced</option><option value="rush">Rush</option><option value="headshot">One Tap / Headshot</option><option value="sniper">Sniper</option></select></label>
@@ -36,5 +66,5 @@ const form=document.querySelector('#form'),status=document.querySelector('#statu
 for(const name of Object.keys(phoneModels)){brand.add(new Option(name,name))}
 brand.addEventListener('change',()=>{model.replaceChildren(new Option(brand.value?'Select phone model':'Select a brand first',''));for(const name of phoneModels[brand.value]||[])model.add(new Option(name,name));model.disabled=!brand.value;status.textContent=''});
 form.addEventListener('submit',async e=>{e.preventDefault();const allowed=phoneModels[brand.value]||[];if(!allowed.includes(model.value)){status.textContent='Please select a valid phone model for the chosen brand.';return}buy.disabled=true;status.textContent='Preparing secure checkout…';try{const data=Object.fromEntries(new FormData(form));const r=await fetch('/api/checkout',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});const j=await r.json();if(!r.ok||!j.url)throw Error(j.error||'Checkout unavailable');location.href=j.url}catch(err){status.textContent=err.message;buy.disabled=false}});
-const order=new URLSearchParams(location.search).get('order');if(order){status.textContent='Checking payment status…';let attempts=0;const check=async()=>{try{const r=await fetch('/api/premium-result?order='+encodeURIComponent(order));const j=await r.json();if(r.status===202&&attempts++<20){status.textContent='Waiting for verified payment…';setTimeout(check,3000);return}if(!r.ok)throw Error(j.error||'Could not verify payment');status.textContent='Payment verified ✓';result.textContent=Object.entries(j.settings).map(([k,v])=>k+': '+v).join('\n');result.classList.remove('hidden')}catch(err){status.textContent=err.message}};check()}
-</script></body></html>
+const order=new URLSearchParams(location.search).get('order');if(order){
+  document.querySelector('#coming-soon').classList.add('hidden');

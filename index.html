@@ -6,6 +6,14 @@
 <title>FF Sensi Pro | Sensitivity Generator</title>
 <style>
 :root{color-scheme:dark;--bg:#080d1c;--panel:#121a30;--line:#2a3655;--text:#edf4ff;--muted:#9aaaca;--cyan:#35e5f5;--purple:#a46aff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#152c51 0%,transparent 45%),radial-gradient(ellipse at 90% 10%,#291b4c 0%,transparent 35%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}.wrap{width:min(940px,92%);margin:auto}header{border-bottom:1px solid #ffffff18;padding:20px 0}.brand{font-weight:900;font-size:1.3rem;letter-spacing:.08em}.brand span,.accent{color:var(--cyan)}.hero{text-align:center;padding:58px 0 30px}.eyebrow{font-size:.8rem;letter-spacing:.22em;color:var(--cyan);font-weight:800}.hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin:12px 0;background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:570px;margin:16px auto}.panel{background:#121a30e8;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:0 20px 70px #0005;margin:24px 0}.panel h2{font-size:1.25rem;margin:0 0 22px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}label{display:block;color:#cbd8f0;font-size:.9rem;font-weight:650;margin-bottom:7px}input,select{width:100%;background:#0b1326;border:1px solid #344463;color:#fff;border-radius:11px;padding:13px 14px;font:inherit;outline:none}input:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #35e5f51a}button{border:0;border-radius:12px;padding:15px 22px;font:inherit;font-weight:850;cursor:pointer}button.primary{width:100%;margin-top:24px;color:#06121e;background:linear-gradient(100deg,var(--cyan),#8a79ff);box-shadow:0 8px 26px #35e5f522}button.secondary{background:#273654;color:#fff;border:1px solid #435578}.note{color:var(--muted);font-size:.83rem}.hidden{display:none}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.metric{background:#0a1429;border:1px solid #263c5b;border-radius:13px;padding:16px}.metric-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:11px}.metric strong{font-size:1.2rem;color:var(--cyan)}.track{height:7px;border-radius:50px;background:#2a3855;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:50px}.actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}footer{text-align:center;color:#8495b6;padding:30px 0 50px;font-size:.85rem}@media(max-width:620px){.fields,.results{grid-template-columns:1fr}.hero{padding-top:40px}.panel{border-radius:16px}}
+
+.loading{margin-top:20px;background:#0a1429;border:1px solid #263c5b;border-radius:13px;padding:18px}
+.loading-title{font-weight:750;margin-bottom:12px;color:var(--cyan)}
+.loading-track{height:12px;background:#293653;border-radius:30px;overflow:hidden}
+.loading-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:30px;transition:width .35s ease}
+.loading-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:var(--muted);font-size:.85rem}
+.loading-meta strong{color:var(--cyan)}button:disabled{opacity:.65;cursor:wait}
+@media(prefers-reduced-motion:reduce){.loading-fill{transition:none}}
 </style>
 </head>
 <body>
@@ -19,14 +27,138 @@
 <div><label for="hz">Refresh Rate</label><select id="hz"><option value="60">60 Hz</option><option value="90">90 Hz</option><option value="120">120 Hz</option><option value="144">144 Hz+</option></select></div>
 <div><label for="style">Play Style</label><select id="style"><option value="balanced">Balanced</option><option value="rush">Rush Player</option><option value="headshot">One Tap / Headshot</option><option value="sniper">Sniper</option></select></div>
 <div><label for="scale">Sensitivity Scale</label><select id="scale"><option value="200">0–200</option><option value="100">0–100</option></select></div>
-</div><button class="primary" type="submit">⚡ GENERATE MY SENSITIVITY</button></form><p class="note">These are estimated starting points, not verified settings for every device. Phone model text is used to label your result; it is not yet analyzed by AI.</p></section>
+</div><button class="primary" type="submit">⚡ GENERATE SENSITIVITY</button></form><div id="loading" class="loading hidden" role="status" aria-live="polite"><div id="loadingTitle" class="loading-title">Finding your sensitivity...</div><div class="loading-track"><div id="loadingFill" class="loading-fill"></div></div><div class="loading-meta"><span id="loadingStep">Analyzing device...</span><strong id="loadingPercent">0%</strong></div></div><p class="note">Personalized starting recommendations based on your device details and play style. Adjust them in-game for your comfort.</p></section>
 <section class="panel hidden" id="output" aria-live="polite"><h2>🎯 Your Recommended Settings</h2><p id="deviceLabel" class="note"></p><div id="results" class="results"></div><div class="actions"><button id="copy" class="secondary" type="button">📋 Copy All Settings</button></div><p class="note">Fire Button Size is a percentage. DPI is optional; changing system display density can affect your entire phone. Test gradually in training mode.</p></section>
 </main><footer>FF SENSI PRO • Fan-made tool, not affiliated with Garena or Free Fire.</footer>
 <script>
-const form=document.getElementById('generator'), output=document.getElementById('output'), results=document.getElementById('results');let copyText='';
-const clamp=(v,min,max)=>Math.max(min,Math.min(max,Math.round(v)));
-form.addEventListener('submit',e=>{e.preventDefault();const brand=document.getElementById('brand').value,model=document.getElementById('model').value.trim();if(!brand||!model)return;const ram=Number(document.getElementById('ram').value),hz=Number(document.getElementById('hz').value),style=document.getElementById('style').value,max=Number(document.getElementById('scale').value);const base={general:178,red:174,two:166,four:152,sniper:82,look:145};const adjustments={balanced:[0,0,0,0,0,0],rush:[12,10,5,-2,-8,8],headshot:[10,14,7,0,-4,2],sniper:[-8,-6,0,10,16,-5]};const keys=Object.keys(base),names=['General','Red Dot','2X Scope','4X Scope','Sniper Scope','Free Look'];const hardware=(hz>=120?4:hz>=90?2:0)+(ram<=3?-8:ram>=8?3:0);const vals=keys.map((key,i)=>clamp((base[key]+adjustments[style][i]+hardware)*max/200,0,max));const fire=clamp(41+(style==='headshot'?4:style==='rush'?2:style==='sniper'?-4:0)+(hz>=120?1:0),25,65);const dpi=clamp(420+(ram>=8?20:0)+(style==='headshot'?20:0),360,520);const all=[...names.map((name,i)=>({name,value:vals[i],limit:max,suffix:''})),{name:'Fire Button Size',value:fire,limit:100,suffix:'%'},{name:'Recommended DPI (optional)',value:dpi,limit:600,suffix:''}];results.replaceChildren();all.forEach(item=>{const box=document.createElement('div');box.className='metric';const head=document.createElement('div');head.className='metric-head';const label=document.createElement('span');label.textContent=item.name;const value=document.createElement('strong');value.textContent=item.value+item.suffix;head.append(label,value);const track=document.createElement('div');track.className='track';const fill=document.createElement('div');fill.className='fill';fill.style.width=(item.value/item.limit*100)+'%';track.append(fill);box.append(head,track);results.append(box)});document.getElementById('deviceLabel').textContent=`${brand} ${model} • ${ram} GB RAM • ${hz} Hz • ${style.toUpperCase()}`;copyText=`FF SENSI PRO — ${brand} ${model}\n`+all.map(item=>`${item.name}: ${item.value}${item.suffix}`).join('\n');output.classList.remove('hidden');output.scrollIntoView({behavior:'smooth',block:'start'});});
-document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(copyText);document.getElementById('copy').textContent='✓ Copied!';setTimeout(()=>document.getElementById('copy').textContent='📋 Copy All Settings',1800)}catch{window.prompt('Copy these settings:',copyText)}});
+const form = document.getElementById('generator');
+const output = document.getElementById('output');
+const results = document.getElementById('results');
+const generateButton = form.querySelector('button[type="submit"]');
+const copyButton = document.getElementById('copy');
+let copyText = '';
+
+const settingsFields = [
+  {key:'general', name:'General'},
+  {key:'redDot', name:'Red Dot'},
+  {key:'scope2x', name:'2X Scope'},
+  {key:'scope4x', name:'4X Scope'},
+  {key:'sniperScope', name:'Sniper Scope'},
+  {key:'freeLook', name:'Free Look'},
+  {key:'fireButtonSize', name:'Fire Button Size', suffix:'%', limit:100},
+  {key:'dpi', name:'Recommended DPI (optional)', limit:650}
+];
+
+const loading = document.getElementById('loading');
+const loadingTitle = document.getElementById('loadingTitle');
+const loadingStep = document.getElementById('loadingStep');
+const loadingFill = document.getElementById('loadingFill');
+const loadingPercent = document.getElementById('loadingPercent');
+let progressTimer;
+let progress = 0;
+function setProgress(value) {
+  progress = Math.max(progress, Math.min(100, value));
+  loadingFill.style.width = progress + '%';
+  loadingPercent.textContent = Math.round(progress) + '%';
+  loadingStep.textContent = progress < 30 ? 'Analyzing device...' :
+    progress < 65 ? 'Calculating sensitivity...' :
+    progress < 100 ? 'Preparing your settings...' : 'Settings ready!';
+}
+function startProgress(device) {
+  clearInterval(progressTimer);
+  progress = 0;
+  loadingFill.style.width = '0%';
+  loadingPercent.textContent = '0%';
+  loadingTitle.textContent = 'Finding sensitivity for ' + device + '...';
+  loading.classList.remove('hidden');
+  setProgress(3);
+  progressTimer = setInterval(() => {
+    // Estimated progress while waiting; 100% only after the response arrives.
+    const step = progress < 55 ? 4 : progress < 80 ? 2 : 0.5;
+    setProgress(Math.min(92, progress + step));
+  }, 320);
+}
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const brand = document.getElementById('brand').value;
+  const model = document.getElementById('model').value.trim();
+  if (!brand || !model) return;
+  const ram = document.getElementById('ram').value;
+  const refreshRate = document.getElementById('hz').value;
+  const playStyle = document.getElementById('style').value;
+  const scale = document.getElementById('scale').value;
+  generateButton.disabled = true;
+  generateButton.textContent = '⏳ FINDING SENSITIVITY...';
+  output.classList.add('hidden');
+  results.replaceChildren();
+  copyButton.disabled = true;
+  copyText = '';
+  startProgress(`${brand} ${model}`);
+  try {
+    const response = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({brand, model, ram, refreshRate, playStyle, scale})
+    });
+    const data = await response.json();
+    if (!response.ok || !data.success || !data.settings) {
+      throw new Error(data.error || 'Sensitivity service is unavailable.');
+    }
+    const items = settingsFields.map(field => {
+      const value = Number(data.settings[field.key]);
+      if (!Number.isFinite(value)) throw new Error('Incomplete settings. Please retry.');
+      return {...field, value:Math.round(value), limit:field.limit || Number(scale), suffix:field.suffix || ''};
+    });
+    items.forEach(item => {
+      const box = document.createElement('div');
+      box.className = 'metric';
+      const head = document.createElement('div');
+      head.className = 'metric-head';
+      const label = document.createElement('span');
+      label.textContent = item.name;
+      const value = document.createElement('strong');
+      value.textContent = item.value + item.suffix;
+      head.append(label, value);
+      const track = document.createElement('div');
+      track.className = 'track';
+      const fill = document.createElement('div');
+      fill.className = 'fill';
+      fill.style.width = Math.max(0, Math.min(100, item.value / item.limit * 100)) + '%';
+      track.append(fill);
+      box.append(head, track);
+      results.append(box);
+    });
+    document.getElementById('deviceLabel').textContent = `${brand} ${model} • ${ram} GB RAM • ${refreshRate} Hz • ${playStyle.toUpperCase()} • Estimated settings`;
+    copyText = `FF SENSI PRO — ${brand} ${model}\n` + items.map(item => `${item.name}: ${item.value}${item.suffix}`).join('\n');
+    copyButton.disabled = false;
+    clearInterval(progressTimer);
+    setProgress(100);
+    await new Promise(resolve => setTimeout(resolve, 450));
+    loading.classList.add('hidden');
+    output.classList.remove('hidden');
+    output.scrollIntoView({behavior:'smooth', block:'start'});
+  } catch (error) {
+    clearInterval(progressTimer);
+    loading.classList.add('hidden');
+    output.classList.remove('hidden');
+    document.getElementById('deviceLabel').textContent = '⚠️ ' + (error.message || 'Unable to generate settings. Please try again.');
+    output.scrollIntoView({behavior:'smooth', block:'start'});
+  } finally {
+    generateButton.disabled = false;
+    generateButton.textContent = '⚡ GENERATE SENSITIVITY';
+  }
+});
+
+copyButton.addEventListener('click', async () => {
+  if (!copyText) return;
+  try {
+    await navigator.clipboard.writeText(copyText);
+    copyButton.textContent = '✓ Copied!';
+    setTimeout(() => {copyButton.textContent = '📋 Copy All Settings';}, 1800);
+  } catch {
+    window.prompt('Copy these settings:', copyText);
+  }
+});
 </script>
 </body>
 </html>

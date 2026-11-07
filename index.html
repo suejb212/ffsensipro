@@ -87,6 +87,11 @@ function startProgress(device) {
 }
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  
+if (typeof gtag === 'function') {
+  gtag('event', 'generate_click');
+}
+
   const brand = document.getElementById('brand').value;
   const model = document.getElementById('model').value.trim();
   if (!brand || !model) return;

@@ -25,6 +25,12 @@
 .loading-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:var(--muted);font-size:.85rem}
 .loading-meta strong{color:var(--cyan)}button:disabled{opacity:.65;cursor:wait}
 @media(prefers-reduced-motion:reduce){.loading-fill{transition:none}}
+
+.sensi-lock{text-align:center;border-color:#703c55;background:linear-gradient(145deg,#1c1422,#151b32)}
+.sensi-lock h2{font-size:2rem}.sensi-lock p{color:var(--muted)}
+.tiktok-follow{display:block;text-decoration:none;margin-top:24px;padding:17px;border-radius:13px;color:white;font-weight:900;background:linear-gradient(100deg,#ef253b,#ff6723)}
+.sensi-unlock{width:100%;margin-top:15px;background:#273654;color:white;border:1px solid #435578}
+.sensi-unlock:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -39,6 +45,14 @@
 <div><label for="style">Play Style</label><select id="style"><option value="balanced">Balanced</option><option value="rush">Rush Player</option><option value="headshot">One Tap / Headshot</option><option value="sniper">Sniper</option></select></div>
 <div><label for="scale">Sensitivity Scale</label><select id="scale"><option value="200">0–200</option><option value="100">0–100</option></select></div>
 </div><button class="primary" type="submit">⚡ GENERATE SENSITIVITY</button></form><div id="loading" class="loading hidden" role="status" aria-live="polite"><div id="loadingTitle" class="loading-title">Finding your sensitivity...</div><div class="loading-track"><div id="loadingFill" class="loading-fill"></div></div><div class="loading-meta"><span id="loadingStep">Analyzing device...</span><strong id="loadingPercent">0%</strong></div></div><p class="note">Personalized starting recommendations based on your device details and play style. Adjust them in-game for your comfort.</p></section>
+<section class="panel sensi-lock hidden" id="sensiLock" aria-live="polite">
+<div style="font-size:55px">🔒</div><h2>SENSI LOCKED</h2>
+<p id="sensiLockDevice">Your Free Sensi is ready!</p>
+<p>Visit our TikTok profile, then return to unlock your settings.</p>
+<a id="tiktokFollow" class="tiktok-follow" href="https://www.tiktok.com/@ff.suejb" target="_blank" rel="noopener noreferrer">♪ FOLLOW ON TIKTOK</a>
+<button id="unlockSensi" class="sensi-unlock" type="button" disabled>🔒 UNLOCK SENSI</button>
+<p class="note" id="unlockHint">Tap Follow on TikTok first, then return to unlock.</p>
+</section>
 <section class="panel hidden" id="output" aria-live="polite"><h2>🎯 Your Recommended Settings</h2><p id="deviceLabel" class="note"></p><div id="results" class="results"></div><div class="actions"><button id="copy" class="secondary" type="button">📋 Copy All Settings</button></div><p class="note">Fire Button Size is a percentage. DPI is optional; changing system display density can affect your entire phone. Test gradually in training mode.</p></section>
 <section class="panel premium-card" id="premium"><h2>👑 Premium Sensi</h2><div class="premium-price">€4.99 <span class="note">/ one generation</span></div><p>Get an additional Premium sensitivity recommendation tailored to your device and play style. Your payment must be verified before a Premium generation is unlocked.</p><a class="premium-link" href="/premium.html" onclick="if (typeof gtag === 'function') gtag('event', 'premium_click');">👑 OPEN PREMIUM SENSI</a><p class="note">Secure checkout • One-time payment of €4.99 per Premium generation.</p></section></main><footer>© 2026 FF SENSI PRO. All rights reserved.</footer>
 <script>
@@ -48,6 +62,21 @@ const results = document.getElementById('results');
 const generateButton = form.querySelector('button[type="submit"]');
 const copyButton = document.getElementById('copy');
 let copyText = '';
+const sensiLock = document.getElementById('sensiLock');
+const unlockSensi = document.getElementById('unlockSensi');
+let visitedTikTok = false;
+document.getElementById('tiktokFollow').addEventListener('click', () => {
+  visitedTikTok = true;
+  unlockSensi.disabled = false;
+  unlockSensi.textContent = '🔓 UNLOCK SENSI';
+  document.getElementById('unlockHint').textContent = 'Welcome back! Tap Unlock Sensi.';
+});
+unlockSensi.addEventListener('click', () => {
+  if (!visitedTikTok || !copyText) return;
+  sensiLock.classList.add('hidden');
+  output.classList.remove('hidden');
+  output.scrollIntoView({behavior:'smooth',block:'start'});
+});
 
 const settingsFields = [
   {key:'general', name:'General'},
@@ -165,6 +194,11 @@ if (typeof gtag === 'function') {
   generateButton.disabled = true;
   generateButton.textContent = '⏳ FINDING SENSITIVITY...';
   output.classList.add('hidden');
+  sensiLock.classList.add('hidden');
+  visitedTikTok = false;
+  unlockSensi.disabled = true;
+  unlockSensi.textContent = '🔒 UNLOCK SENSI';
+  document.getElementById('unlockHint').textContent = 'Tap Follow on TikTok first, then return to unlock.';
   results.replaceChildren();
   copyButton.disabled = true;
   copyText = '';
@@ -213,8 +247,9 @@ if (typeof gtag === 'function') {
     setProgress(100);
     await new Promise(resolve => setTimeout(resolve, 450));
     loading.classList.add('hidden');
-    output.classList.remove('hidden');
-    output.scrollIntoView({behavior:'smooth', block:'start'});
+    document.getElementById('sensiLockDevice').textContent = `Your settings for ${brand} ${model} are ready.`;
+    sensiLock.classList.remove('hidden');
+    sensiLock.scrollIntoView({behavior:'smooth', block:'start'});
   } catch (error) {
     clearInterval(progressTimer);
     loading.classList.add('hidden');

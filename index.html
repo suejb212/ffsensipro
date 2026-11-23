@@ -37,6 +37,25 @@
 .tiktok-follow{display:block;text-decoration:none;margin-top:24px;padding:17px;border-radius:13px;color:white;font-weight:900;background:linear-gradient(100deg,#ef253b,#ff6723)}
 .sensi-unlock{width:100%;margin-top:15px;background:#273654;color:white;border:1px solid #435578}
 .sensi-unlock:disabled{opacity:.5;cursor:not-allowed}
+
+/* Footer links — new */
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px 20px;
+  margin-bottom:18px;
+}
+.footer-links a{
+  color:#cbd8f0;
+  text-decoration:none;
+  font-size:.9rem;
+}
+.footer-links a:hover{
+  color:var(--cyan);
+  text-decoration:underline;
+}
+.footer-copy{margin:0}
 </style>
 </head>
 <body>
@@ -60,7 +79,21 @@
 <p class="note" id="unlockHint">Tap Follow on TikTok first, then return to unlock.</p>
 </section>
 <section class="panel hidden" id="output" aria-live="polite"><h2>🎯 Your Recommended Settings</h2><p id="deviceLabel" class="note"></p><div id="results" class="results"></div><div class="actions"><button id="copy" class="secondary" type="button">📋 Copy All Settings</button></div><p class="note">Fire Button Size is a percentage. DPI is optional; changing system display density can affect your entire phone. Test gradually in training mode.</p></section>
-<section class="panel premium-card" id="premium"><h2>👑 Premium Sensi</h2><div class="premium-price">€4.99 <span class="note">/ one generation</span></div><p>Get an additional Premium sensitivity recommendation tailored to your device and play style. Your payment must be verified before a Premium generation is unlocked.</p><a class="premium-link" href="/premium.html" onclick="if (typeof gtag === 'function') gtag('event', 'premium_click');">👑 OPEN PREMIUM SENSI</a><p class="note">Secure checkout • One-time payment of €4.99 per Premium generation.</p></section></main><footer>© 2026 FF SENSI PRO. All rights reserved.</footer>
+<section class="panel premium-card" id="premium"><h2>👑 Premium Sensi</h2><div class="premium-price">€4.99 <span class="note">/ one generation</span></div><p>Get an additional Premium sensitivity recommendation tailored to your device and play style. Your payment must be verified before a Premium generation is unlocked.</p><a class="premium-link" href="/premium.html" onclick="if (typeof gtag === 'function') gtag('event', 'premium_click');">👑 OPEN PREMIUM SENSI</a><p class="note">Secure checkout • One-time payment of €4.99 per Premium generation.</p></section></main>
+
+<footer>
+  <div class="wrap">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/cookies.html">Cookie Policy</a>
+    </nav>
+    <p class="footer-copy">© 2026 FF SENSI PRO. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
 const form = document.getElementById('generator');
 const output = document.getElementById('output');

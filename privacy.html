@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d1c">
-
+  <meta name="description" content="Learn how FF Sensi Pro respects your privacy when using our Free Fire sensitivity generator, Premium features and website services.">
   <title>Privacy Policy | FF Sensi Pro</title>
-  <meta name="description" content="Read the FF Sensi Pro Privacy Policy to learn how we handle information, cookies, advertising, analytics and third-party services.">
   <link rel="canonical" href="https://ffsensipro.com/privacy.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
@@ -58,6 +57,8 @@
       font-weight: 900;
       font-size: 1.3rem;
       letter-spacing: .08em;
+      text-decoration: none;
+      color: var(--text);
     }
 
     .brand span {
@@ -84,19 +85,19 @@
 
     .hero {
       text-align: center;
-      padding: 55px 0 20px;
+      padding: 58px 0 25px;
     }
 
     .eyebrow {
-      font-size: .8rem;
-      letter-spacing: .2em;
       color: var(--cyan);
+      font-size: .8rem;
+      letter-spacing: .22em;
       font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 6vw, 3.7rem);
-      line-height: 1.2;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      line-height: 1.15;
       margin: 12px 0;
       background: linear-gradient(90deg, #fff, var(--cyan), var(--purple));
       background-clip: text;
@@ -105,7 +106,7 @@
 
     .hero p {
       color: var(--muted);
-      max-width: 620px;
+      max-width: 650px;
       margin: 16px auto;
     }
 
@@ -115,31 +116,48 @@
       border-radius: 20px;
       padding: clamp(22px, 5vw, 42px);
       box-shadow: 0 20px 70px #0005;
-      margin: 24px 0 45px;
+      margin: 24px 0;
     }
 
     .updated {
+      font-size: .85rem;
       color: var(--muted);
-      font-size: .9rem;
-      margin-bottom: 25px;
+      margin: 0 0 25px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #d9e6ff;
+    }
+
+    .section {
+      padding: 22px 0;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .section:last-of-type {
+      border-bottom: 0;
     }
 
     h2 {
       color: var(--cyan);
-      font-size: 1.3rem;
-      margin: 32px 0 12px;
+      font-size: 1.25rem;
+      margin: 0 0 14px;
     }
 
-    h2:first-of-type {
-      margin-top: 10px;
-    }
-
-    p, li {
+    p {
       color: #cbd8f0;
+      margin: 0 0 14px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
 
     ul {
-      padding-left: 24px;
+      color: #cbd8f0;
+      padding-left: 22px;
+      margin: 10px 0;
     }
 
     li {
@@ -151,16 +169,30 @@
     }
 
     a:hover {
-      color: #a46aff;
+      color: var(--purple);
     }
 
-    .notice {
-      background: #0b1326;
-      border-left: 3px solid var(--cyan);
-      border-radius: 10px;
-      padding: 15px 18px;
-      margin: 24px 0;
-      color: #cbd8f0;
+    .highlight {
+      background: linear-gradient(120deg, #102b42, #211b40);
+      border: 1px solid #36527b;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+
+    .highlight strong {
+      color: var(--cyan);
+    }
+
+    .back-home {
+      display: inline-block;
+      text-decoration: none;
+      color: #06121e;
+      font-weight: 850;
+      background: linear-gradient(100deg, var(--cyan), #8a79ff);
+      border-radius: 12px;
+      padding: 14px 22px;
+      margin: 12px 0 30px;
     }
 
     footer {
@@ -190,6 +222,10 @@
     }
 
     @media (max-width: 620px) {
+      .hero {
+        padding-top: 40px;
+      }
+
       .panel {
         border-radius: 16px;
       }
@@ -210,7 +246,7 @@
 
   <header>
     <div class="wrap topnav">
-      <div class="brand">⚡ FF <span>SENSI PRO</span></div>
+      <a class="brand" href="/">⚡ FF <span>SENSI PRO</span></a>
 
       <nav class="navlinks" aria-label="Main navigation">
         <a href="/">Home</a>
@@ -222,222 +258,215 @@
   <main class="wrap">
 
     <section class="hero">
-      <div class="eyebrow">YOUR PRIVACY MATTERS</div>
+      <div class="eyebrow">FF SENSI PRO • YOUR PRIVACY</div>
       <h1>Privacy Policy</h1>
-      <p>Learn how FF Sensi Pro handles information when you use our Free Fire sensitivity generator and related services.</p>
+      <p>
+        Your gaming experience matters, and so does your privacy.
+        Here's how information is handled when you use FF Sensi Pro.
+      </p>
     </section>
 
     <article class="panel">
 
-      <p class="updated"><strong>Last updated:</strong> November 23, 2026</p>
+      <p class="updated">Last updated: November 23, 2026</p>
 
-      <p>
-        Welcome to FF Sensi Pro, available at
-        <a href="https://ffsensipro.com/">https://ffsensipro.com</a>.
-        This Privacy Policy explains what information may be processed
-        when you visit our website, generate sensitivity recommendations,
-        interact with advertising or use third-party services.
+      <p class="intro">
+        Welcome to <strong>FF Sensi Pro</strong>, a Free Fire sensitivity
+        recommendation website available at
+        <a href="https://ffsensipro.com/">ffsensipro.com</a>.
+        This policy explains how information may be collected,
+        used and shared when you visit our website.
       </p>
 
-      <h2>1. Information You Provide</h2>
+      <div class="highlight">
+        <strong>Our approach</strong>
+        <p>
+          You can use our free sensitivity generator without
+          creating an account. We ask for device and play-style
+          details to prepare your recommended settings.
+        </p>
+      </div>
 
-      <p>
-        When you use the sensitivity generator, you provide information
-        such as your phone brand, phone model, RAM, refresh rate,
-        preferred play style and sensitivity scale.
-      </p>
+      <div class="section">
+        <h2>1. Information Used by the Sensi Generator</h2>
+        <p>
+          To create personalized Free Fire sensitivity recommendations,
+          our generator asks for your phone brand, phone model,
+          RAM, screen refresh rate, play style and preferred
+          sensitivity scale.
+        </p>
+        <p>
+          These details are submitted to our generation service
+          to calculate recommended settings. You do not need to
+          enter your real name, home address or phone number
+          to use the free generator.
+        </p>
+      </div>
 
-      <p>
-        This information is sent to our generation service to produce
-        recommended sensitivity settings. Please avoid entering
-        personal or confidential information into the phone model field.
-      </p>
+      <div class="section">
+        <h2>2. Website Usage and Technical Data</h2>
+        <p>
+          When you visit FF Sensi Pro, our hosting provider and
+          website services may process information such as your
+          IP address, browser type, device information, pages
+          visited and interactions with website features.
+        </p>
+        <p>
+          This information may support website delivery, security,
+          performance, usage measurement and improvements.
+        </p>
+      </div>
 
-      <h2>2. Technical and Usage Information</h2>
+      <div class="section">
+        <h2>3. Cookies and Advertising</h2>
+        <p>
+          FF Sensi Pro uses advertising-related services, including
+          Google AdSense code and Monetag technology.
+          These services may use cookies or similar technologies
+          to display, personalize and measure advertisements,
+          depending on which services are active and your
+          privacy choices.
+        </p>
+        <p>
+          Advertising partners may process information such as
+          device identifiers, IP addresses and browsing activity
+          according to their own privacy policies.
+        </p>
+        <p>
+          Learn more about
+          <a href="https://policies.google.com/technologies/ads"
+             target="_blank" rel="noopener noreferrer">
+            Google's advertising data practices
+          </a>
+          and visit our
+          <a href="/cookies.html">Cookie Policy</a>.
+        </p>
+      </div>
 
-      <p>
-        When you access the website, our hosting infrastructure and
-        third-party services may process technical information such as
-        IP address, browser type, device information, page requests,
-        approximate location derived from IP address and usage events.
-      </p>
+      <div class="section">
+        <h2>4. Analytics and Website Improvements</h2>
+        <p>
+          We may use website measurement tools to understand
+          how visitors interact with the sensitivity generator,
+          which pages are useful and where improvements
+          may be needed.
+        </p>
+        <p>
+          Analytics and advertising tools may collect technical
+          or usage information depending on the services
+          configured on our website.
+        </p>
+      </div>
 
-      <p>
-        This information may be used for website delivery, security,
-        performance monitoring, analytics and advertising, depending
-        on the services active on the website.
-      </p>
+      <div class="section">
+        <h2>5. Premium Sensi and Payments</h2>
+        <p>
+          FF Sensi Pro includes a Premium Sensi section that may
+          offer additional sensitivity recommendations for a
+          one-time payment when purchases are available.
+        </p>
+        <p>
+          Premium checkout may be handled by an external
+          payment provider such as Lemon Squeezy.
+          Payment providers may process billing and transaction
+          details under their own privacy policies.
+        </p>
+        <p>
+          The free sensitivity generator does not ask you
+          to enter credit card information.
+        </p>
+      </div>
 
-      <h2>3. Cookies and Similar Technologies</h2>
+      <div class="section">
+        <h2>6. External Links</h2>
+        <p>
+          Our website includes links to other services,
+          such as TikTok and external payment providers.
+          When you leave FF Sensi Pro, the privacy practices
+          of those websites apply.
+        </p>
+      </div>
 
-      <p>
-        FF Sensi Pro and third-party services may use cookies,
-        local storage, pixels or similar technologies to support
-        functionality, measure traffic and deliver advertising.
-      </p>
+      <div class="section">
+        <h2>7. How We Use Information</h2>
+        <p>Information may be used to:</p>
+        <ul>
+          <li>Generate sensitivity recommendations for your device.</li>
+          <li>Keep the website working and secure.</li>
+          <li>Improve the generator and visitor experience.</li>
+          <li>Measure website usage and advertising performance.</li>
+          <li>Support Premium services when available.</li>
+        </ul>
+      </div>
 
-      <p>
-        Some technologies may be used for personalized advertising
-        where permitted and where any required consent has been obtained.
-        You can manage cookies through your browser settings.
-        Additional information is available in our
-        <a href="/cookies.html">Cookie Policy</a>.
-      </p>
+      <div class="section">
+        <h2>8. Data Storage and Security</h2>
+        <p>
+          We take reasonable steps to protect our website.
+          Information may be processed or retained by hosting,
+          advertising, analytics and payment providers
+          according to their respective policies.
+        </p>
+        <p>
+          Please avoid entering sensitive personal information
+          into the generator's input fields.
+        </p>
+      </div>
 
-      <h2>4. Google AdSense and Advertising</h2>
+      <div class="section">
+        <h2>9. Your Privacy Choices</h2>
+        <p>
+          You can manage or block cookies through your browser
+          settings. Depending on your location, you may also
+          have rights to access, correct or request deletion
+          of certain personal information.
+        </p>
+        <p>
+          Where applicable law requires consent for non-essential
+          cookies or advertising technologies, appropriate
+          consent choices should be provided.
+        </p>
+      </div>
 
-      <p>
-        Our website includes Google AdSense advertising code.
-        If Google advertising is active, Google and its partners
-        may use cookies or similar technologies to serve and measure ads,
-        subject to applicable requirements and user choices.
-      </p>
+      <div class="section">
+        <h2>10. Children's Privacy</h2>
+        <p>
+          FF Sensi Pro is a gaming utility and does not require
+          users to submit personal identity information
+          to generate free settings.
+        </p>
+        <p>
+          If you are a parent or guardian and believe that
+          a child has submitted personal information through
+          the website, please contact us.
+        </p>
+      </div>
 
-      <p>
-        You can learn more about Google's data practices at
-        <a href="https://policies.google.com/technologies/ads"
-           target="_blank" rel="noopener noreferrer">
-          Google's Advertising Technologies page
-        </a>.
-      </p>
+      <div class="section">
+        <h2>11. Policy Updates</h2>
+        <p>
+          We may update this Privacy Policy as our website,
+          features or third-party services change.
+          Any updates will be published here with
+          a revised date.
+        </p>
+      </div>
 
-      <h2>5. Monetag Advertising</h2>
-
-      <p>
-        FF Sensi Pro also includes advertising technology associated
-        with Monetag. When active, this service may process technical
-        and usage information for ad delivery, measurement,
-        fraud prevention and related advertising purposes.
-      </p>
-
-      <p>
-        For additional information, visit
-        <a href="https://monetag.com/"
-           target="_blank" rel="noopener noreferrer">
-          Monetag
-        </a>.
-      </p>
-
-      <h2>6. Analytics and Google Tag Manager</h2>
-
-      <p>
-        Our website loads Google Tag Manager and includes event-tracking
-        code related to generator usage and Premium links.
-        The actual information collected depends on the tags and
-        analytics services configured and active on the website.
-      </p>
-
-      <p>
-        These technologies may help us understand how visitors use
-        FF Sensi Pro and improve the website.
-      </p>
-
-      <h2>7. Premium Services and Payments</h2>
-
-      <p>
-        FF Sensi Pro contains links and functionality related to
-        Premium sensitivity recommendations and Lemon Squeezy.
-        If Premium purchasing is made available, payment processing
-        may be handled by Lemon Squeezy or its payment partners.
-      </p>
-
-      <p>
-        Payment providers may collect billing and transaction
-        information under their own privacy policies.
-        FF Sensi Pro does not ask you to enter payment card details
-        into the free sensitivity generator.
-      </p>
-
-      <h2>8. Third-Party Websites</h2>
-
-      <p>
-        Our website may link to third-party services, including TikTok,
-        payment services and advertising partners. These websites
-        operate under their own privacy policies and terms.
-      </p>
-
-      <p>
-        We recommend reviewing their policies before providing
-        personal information or using their services.
-      </p>
-
-      <h2>9. How Information Is Used</h2>
-
-      <p>Information processed through the website may be used to:</p>
-
-      <ul>
-        <li>Generate Free Fire sensitivity recommendations.</li>
-        <li>Operate, maintain and secure the website.</li>
-        <li>Identify errors and improve performance.</li>
-        <li>Understand website usage and engagement.</li>
-        <li>Support advertising and related measurement.</li>
-        <li>Process Premium purchases if enabled.</li>
-      </ul>
-
-      <h2>10. Data Retention and Security</h2>
-
-      <p>
-        We aim to limit the information used for operating FF Sensi Pro
-        and take reasonable measures to protect the website.
-        Hosting, analytics, advertising and payment providers may
-        retain information according to their own policies.
-      </p>
-
-      <p>
-        No online service can guarantee absolute security.
-        We recommend avoiding submission of unnecessary personal
-        information through website fields.
-      </p>
-
-      <h2>11. Your Privacy Choices</h2>
-
-      <p>
-        Depending on your location and applicable law, you may have
-        rights to request access, correction or deletion of certain
-        personal information, or to object to or restrict some processing.
-      </p>
-
-      <p>
-        You may also manage browser cookies and advertising preferences.
-        Where legally required, non-essential advertising or analytics
-        technologies should be subject to appropriate consent controls.
-      </p>
-
-      <h2>12. Children's Privacy</h2>
-
-      <p>
-        FF Sensi Pro is a gaming-related utility and is not intended
-        to collect personal information from children.
-        Users should avoid submitting personal details in the generator.
-        If you believe a child has provided personal information,
-        please contact the website operator.
-      </p>
-
-      <h2>13. Changes to This Policy</h2>
-
-      <p>
-        We may update this Privacy Policy to reflect changes in
-        website functionality, third-party services or legal
-        requirements. The updated version will be published
-        on this page with a revised date.
-      </p>
-
-      <h2>14. Contact</h2>
-
-      <p>
-        For privacy-related questions or requests, please visit
-        our <a href="/contact.html">Contact Us</a> page.
-      </p>
-
-      <div class="notice">
-        <strong>Important:</strong> This policy describes services
-        identified in the website's current code. Actual cookie,
-        analytics and advertising behavior depends on the active
-        third-party configurations. Any required consent mechanism
-        must be implemented separately.
+      <div class="section">
+        <h2>12. Contact Us</h2>
+        <p>
+          If you have questions about this Privacy Policy
+          or want to make a privacy-related request,
+          please visit our
+          <a href="/contact.html">Contact Us</a> page.
+        </p>
       </div>
 
     </article>
+
+    <div style="text-align:center">
+      <a class="back-home" href="/">⚡ BACK TO SENSI GENERATOR</a>
+    </div>
 
   </main>
 

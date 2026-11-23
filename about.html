@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1c">
+
+  <title>About Us | FF Sensi Pro</title>
+  <meta name="description" content="Learn about FF Sensi Pro, an independent Free Fire sensitivity generator offering personalized settings for iPhone and Android players.">
+  <link rel="canonical" href="https://ffsensipro.com/about.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d1c;
+      --panel: #121a30;
+      --line: #2a3655;
+      --text: #edf4ff;
+      --muted: #9aaaca;
+      --cyan: #35e5f5;
+      --purple: #a46aff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 15% 0%, #152c51 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 10%, #291b4c 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.7 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .wrap {
+      width: min(940px, 92%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #ffffff18;
+      padding: 20px 0;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: .08em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand span {
+      color: var(--cyan);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 9px 14px;
+      border: 1px solid #344463;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .navlinks a:hover {
+      border-color: var(--cyan);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 58px 0 25px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: .8rem;
+      letter-spacing: .22em;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      line-height: 1.15;
+      margin: 12px 0;
+      background: linear-gradient(
+        90deg,
+        #fff,
+        var(--cyan),
+        var(--purple)
+      );
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 16px auto;
+    }
+
+    .panel {
+      background: #121a30e8;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(22px, 5vw, 42px);
+      box-shadow: 0 20px 70px #0005;
+      margin: 24px 0;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #d9e6ff;
+    }
+
+    h2 {
+      color: var(--cyan);
+      font-size: 1.3rem;
+      margin: 0 0 15px;
+    }
+
+    p {
+      color: #cbd8f0;
+      margin: 0 0 15px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section {
+      padding: 24px 0;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .feature {
+      background: #0b1429;
+      border: 1px solid #263c5b;
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: 0 0 10px;
+    }
+
+    .feature p {
+      font-size: .93rem;
+      color: var(--muted);
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #102b42, #211b40);
+      border: 1px solid #36527b;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 25px 0;
+    }
+
+    .highlight strong {
+      color: var(--cyan);
+    }
+
+    .steps {
+      padding-left: 24px;
+      color: #cbd8f0;
+    }
+
+    .steps li {
+      padding: 5px 0;
+    }
+
+    a {
+      color: var(--cyan);
+    }
+
+    a:hover {
+      color: var(--purple);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0 45px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      text-decoration: none;
+      color: #06121e;
+      font-weight: 850;
+      background: linear-gradient(100deg, var(--cyan), #8a79ff);
+      border-radius: 12px;
+      padding: 14px 22px;
+    }
+
+    .secondary-button {
+      display: inline-block;
+      text-decoration: none;
+      color: #edf4ff;
+      font-weight: 750;
+      background: #273654;
+      border: 1px solid #435578;
+      border-radius: 12px;
+      padding: 14px 22px;
+    }
+
+    footer {
+      text-align: center;
+      color: #8495b6;
+      padding: 30px 0 50px;
+      font-size: .85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links a {
+      color: #cbd8f0;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 40px;
+      }
+
+      .panel {
+        border-radius: 16px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+      }
+
+      .navlinks a {
+        padding: 8px 11px;
+        font-size: .9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap topnav">
+      <a class="brand" href="/">
+        ⚡ FF <span>SENSI PRO</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/premium.html">👑 Premium</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="eyebrow">WELCOME TO FF SENSI PRO</div>
+
+      <h1>About Us</h1>
+
+      <p>
+        Helping Free Fire players discover sensitivity
+        settings that match their devices and play styles.
+      </p>
+    </section>
+
+    <article class="panel">
+
+      <p class="intro">
+        <strong>FF Sensi Pro</strong> is an independent
+        online Free Fire sensitivity recommendation tool
+        created for players who want a simple way to
+        explore settings for their phones.
+      </p>
+
+      <div class="highlight">
+        <strong>Our Mission</strong>
+        <p>
+          Make sensitivity setup easier to understand,
+          faster to explore and more accessible for
+          Free Fire players using different devices.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🎮 What Is FF Sensi Pro?</h2>
+
+        <p>
+          FF Sensi Pro is a website that provides
+          personalized starting sensitivity
+          recommendations for Free Fire players.
+        </p>
+
+        <p>
+          Instead of searching through random sensitivity
+          settings, visitors can select their device
+          details and preferred play style to receive
+          a suggested setup.
+        </p>
+
+        <p>
+          Our goal is to help players experiment with
+          settings and find what feels comfortable
+          for their own gameplay.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>⚡ What We Offer</h2>
+
+        <div class="features">
+
+          <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Device-Based Settings</h3>
+            <p>
+              Recommendations based on phone brand,
+              model, RAM and refresh rate.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Different Play Styles</h3>
+            <p>
+              Explore starting settings for balanced,
+              rush, headshot and sniper play styles.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">⚙️</div>
+            <h3>Detailed Sensitivity Values</h3>
+            <p>
+              Suggested values for General, Red Dot,
+              scopes, Free Look, Fire Button Size
+              and optional DPI.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">👑</div>
+            <h3>Premium Sensi</h3>
+            <p>
+              An additional recommendation option
+              planned for players who want to
+              explore Premium settings.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🚀 How It Works</h2>
+
+        <p>
+          Using the FF Sensi Pro generator is simple:
+        </p>
+
+        <ol class="steps">
+          <li>Select your phone brand and model.</li>
+          <li>Choose your RAM and screen refresh rate.</li>
+          <li>Select your preferred play style.</li>
+          <li>Choose a sensitivity scale.</li>
+          <li>Tap Generate Sensitivity.</li>
+          <li>Follow the on-screen steps to unlock and view your recommendations.</li>
+          <li>Test the settings in Free Fire and adjust them to your preference.</li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <h2>💡 Why Sensitivity Matters</h2>
+
+        <p>
+          Sensitivity settings influence how quickly
+          your in-game camera and aiming controls
+          respond to your movements.
+        </p>
+
+        <p>
+          Different devices, screen sizes and
+          individual playing habits can affect
+          which settings feel comfortable.
+        </p>
+
+        <p>
+          There is no single perfect sensitivity
+          setup for every player. Our generator
+          provides a starting point that you
+          can fine-tune through practice.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>👑 About Premium Sensi</h2>
+
+        <p>
+          FF Sensi Pro also features a Premium Sensi
+          section for additional personalized
+          sensitivity recommendations.
+        </p>
+
+        <p>
+          Premium availability and purchasing
+          information are shown on the
+          <a href="/premium.html">Premium page</a>.
+          Premium results are recommendations,
+          not guarantees of improved gameplay.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>🤝 Independent Gaming Website</h2>
+
+        <p>
+          FF Sensi Pro is an independent
+          fan-oriented gaming utility.
+        </p>
+
+        <p>
+          We are not affiliated with, endorsed
+          by or sponsored by Garena or Free Fire.
+          Game names and trademarks belong
+          to their respective owners.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📩 Get in Touch</h2>
+
+        <p>
+          Have a question, suggestion or feedback
+          about FF Sensi Pro?
+        </p>
+
+        <p>
+          Visit our
+          <a href="/contact.html">Contact Us</a>
+          page to learn how to reach us.
+        </p>
+      </div>
+
+    </article>
+
+    <div class="buttons">
+      <a class="primary-button" href="/">
+        ⚡ TRY SENSI GENERATOR
+      </a>
+
+      <a class="secondary-button" href="/premium.html">
+        👑 EXPLORE PREMIUM
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/cookies.html">Cookie Policy</a>
+      </nav>
+
+      <p>
+        © 2026 FF SENSI PRO. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>

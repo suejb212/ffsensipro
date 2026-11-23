@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d1c">
+<title>Contact Us | FF Sensi Pro</title>
+<meta name="description" content="Contact FF Sensi Pro for help with the Free Fire sensitivity generator, Premium Sensi, feedback or other questions.">
+<link rel="canonical" href="https://ffsensipro.com/contact.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<style>
+:root {
+  color-scheme:dark;
+  --bg:#080d1c;
+  --panel:#121a30;
+  --line:#2a3655;
+  --text:#edf4ff;
+  --muted:#9aaaca;
+  --cyan:#35e5f5;
+  --purple:#a46aff;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 15% 0%,#152c51 0%,transparent 45%),
+    radial-gradient(ellipse at 90% 10%,#291b4c 0%,transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;
+}
+.wrap {width:min(940px,92%);margin:auto}
+header {border-bottom:1px solid #ffffff18;padding:20px 0}
+.topnav {display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand {
+  color:var(--text);
+  text-decoration:none;
+  font-weight:900;
+  font-size:1.3rem;
+  letter-spacing:.08em;
+}
+.brand span {color:var(--cyan)}
+.navlinks {display:flex;gap:10px}
+.navlinks a {
+  color:var(--text);
+  text-decoration:none;
+  padding:9px 14px;
+  border:1px solid #344463;
+  border-radius:10px;
+  font-weight:700;
+}
+.navlinks a:hover {border-color:var(--cyan)}
+.hero {text-align:center;padding:58px 0 25px}
+.eyebrow {
+  color:var(--cyan);
+  font-size:.8rem;
+  letter-spacing:.22em;
+  font-weight:800;
+}
+h1 {
+  font-size:clamp(2.2rem,6vw,3.8rem);
+  line-height:1.15;
+  margin:12px 0;
+  background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));
+  background-clip:text;
+  color:transparent;
+}
+.hero p {color:var(--muted);max-width:650px;margin:16px auto}
+.panel {
+  background:#121a30e8;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:clamp(22px,5vw,42px);
+  box-shadow:0 20px 70px #0005;
+  margin:24px 0;
+}
+.panel h2 {font-size:1.4rem;margin:0 0 12px;color:var(--cyan)}
+.panel p {color:#cbd8f0}
+label {
+  display:block;
+  color:#cbd8f0;
+  font-size:.95rem;
+  font-weight:700;
+  margin:20px 0 8px;
+}
+input,textarea,select {
+  width:100%;
+  background:#0b1326;
+  border:1px solid #344463;
+  color:#fff;
+  border-radius:11px;
+  padding:14px;
+  font:inherit;
+  outline:none;
+}
+textarea {min-height:160px;resize:vertical}
+input:focus,textarea:focus,select:focus {
+  border-color:var(--cyan);
+  box-shadow:0 0 0 3px #35e5f51a;
+}
+button {
+  width:100%;
+  margin-top:24px;
+  border:0;
+  border-radius:12px;
+  padding:16px 22px;
+  color:#06121e;
+  background:linear-gradient(100deg,var(--cyan),#8a79ff);
+  font:inherit;
+  font-weight:850;
+  cursor:pointer;
+}
+button:disabled {opacity:.65;cursor:wait}
+.note {color:var(--muted);font-size:.85rem}
+.status {margin-top:16px;font-weight:700}
+.status.error {color:#ff9aa8}
+.status.success {color:#6ff0b2}
+.hidden {display:none}
+.back-home {
+  display:inline-block;
+  text-decoration:none;
+  color:#06121e;
+  font-weight:850;
+  background:linear-gradient(100deg,var(--cyan),#8a79ff);
+  border-radius:12px;
+  padding:14px 22px;
+  margin:12px 0 30px;
+}
+footer {text-align:center;color:#8495b6;padding:30px 0 50px;font-size:.85rem}
+.footer-links {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px 20px;
+  margin-bottom:18px;
+}
+.footer-links a {color:#cbd8f0;text-decoration:none;font-size:.9rem}
+.footer-links a:hover {color:var(--cyan);text-decoration:underline}
+@media(max-width:620px) {
+  .hero {padding-top:40px}
+  .panel {border-radius:16px}
+  .brand {font-size:1.05rem}
+  .navlinks a {padding:8px 11px;font-size:.9rem}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="wrap topnav">
+    <a class="brand" href="/">⚡ FF <span>SENSI PRO</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/premium.html">👑 Premium</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">WE'RE HERE TO HELP</div>
+    <h1>Contact Us</h1>
+    <p>
+      Questions about your sensitivity settings,
+      Premium Sensi or the website?
+      Send us a message.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>📩 Send Us a Message</h2>
+    <p>Fill in the form below and our team will review your message.</p>
+
+    <form id="contactForm">
+      <label for="name">Your Name</label>
+      <input id="name" name="name" type="text"
+             placeholder="Enter your name"
+             maxlength="100" autocomplete="name" required>
+
+      <label for="email">Your Email Address</label>
+      <input id="email" name="email" type="email"
+             placeholder="you@example.com"
+             maxlength="254" autocomplete="email" required>
+
+      <label for="subject">What Do You Need Help With?</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select a topic</option>
+        <option value="Free Sensi Generator">Free Sensi Generator</option>
+        <option value="Premium Sensi">Premium Sensi</option>
+        <option value="Payment Issue">Payment Issue</option>
+        <option value="Website Problem">Website Problem</option>
+        <option value="Suggestion or Feedback">Suggestion or Feedback</option>
+        <option value="Privacy Request">Privacy Request</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="message">Describe Your Problem</label>
+      <textarea id="message" name="message"
+                placeholder="Tell us what happened or how we can help..."
+                minlength="10" maxlength="3000" required></textarea>
+
+      <p class="note">
+        Please do not include passwords, payment card details
+        or other sensitive personal information.
+      </p>
+
+      <button id="sendButton" type="submit">
+        ✉️ SEND MESSAGE
+      </button>
+
+      <p id="formStatus" class="status hidden" role="status"
+         aria-live="polite"></p>
+    </form>
+  </section>
+
+  <div style="text-align:center">
+    <a class="back-home" href="/">⚡ BACK TO SENSI GENERATOR</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+      <a href="/about.html">About Us</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/cookies.html">Cookie Policy</a>
+    </nav>
+    <p>© 2026 FF SENSI PRO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const form = document.getElementById('contactForm');
+const button = document.getElementById('sendButton');
+const statusBox = document.getElementById('formStatus');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  button.disabled = true;
+  button.textContent = '⏳ SENDING...';
+  statusBox.className = 'status hidden';
+  statusBox.textContent = '';
+
+  const data = {
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value.trim()
+  };
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Unable to send message.');
+    }
+
+    statusBox.className = 'status success';
+    statusBox.textContent =
+      '✓ Your message has been sent successfully!';
+    form.reset();
+  } catch (error) {
+    statusBox.className = 'status error';
+    statusBox.textContent =
+      error.message || 'Unable to send. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.textContent = '✉️ SEND MESSAGE';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1c">
+  <title>Terms &amp; Conditions | FF Sensi Pro</title>
+  <meta name="description" content="Read the Terms and Conditions for using FF Sensi Pro, our Free Fire sensitivity generator and optional Premium Sensi services.">
+  <link rel="canonical" href="https://ffsensipro.com/terms.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d1c;
+      --panel: #121a30;
+      --line: #2a3655;
+      --text: #edf4ff;
+      --muted: #9aaaca;
+      --cyan: #35e5f5;
+      --purple: #a46aff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 15% 0%, #152c51 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 10%, #291b4c 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.7 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .wrap {
+      width: min(940px, 92%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #ffffff18;
+      padding: 20px 0;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: .08em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand span {
+      color: var(--cyan);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 9px 14px;
+      border: 1px solid #344463;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .navlinks a:hover {
+      border-color: var(--cyan);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 58px 0 25px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: .8rem;
+      letter-spacing: .22em;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      line-height: 1.15;
+      margin: 12px 0;
+      background: linear-gradient(90deg, #fff, var(--cyan), var(--purple));
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 16px auto;
+    }
+
+    .panel {
+      background: #121a30e8;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(22px, 5vw, 42px);
+      box-shadow: 0 20px 70px #0005;
+      margin: 24px 0;
+    }
+
+    .updated {
+      font-size: .85rem;
+      color: var(--muted);
+      margin: 0 0 25px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #d9e6ff;
+    }
+
+    .section {
+      padding: 22px 0;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .section:last-of-type {
+      border-bottom: 0;
+    }
+
+    h2 {
+      color: var(--cyan);
+      font-size: 1.25rem;
+      margin: 0 0 14px;
+    }
+
+    p {
+      color: #cbd8f0;
+      margin: 0 0 14px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      color: #cbd8f0;
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin-bottom: 9px;
+    }
+
+    a {
+      color: var(--cyan);
+    }
+
+    a:hover {
+      color: var(--purple);
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #102b42, #211b40);
+      border: 1px solid #36527b;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+
+    .highlight strong {
+      color: var(--cyan);
+    }
+
+    .back-home {
+      display: inline-block;
+      text-decoration: none;
+      color: #06121e;
+      font-weight: 850;
+      background: linear-gradient(100deg, var(--cyan), #8a79ff);
+      border-radius: 12px;
+      padding: 14px 22px;
+      margin: 12px 0 30px;
+    }
+
+    footer {
+      text-align: center;
+      color: #8495b6;
+      padding: 30px 0 50px;
+      font-size: .85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links a {
+      color: #cbd8f0;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 40px;
+      }
+
+      .panel {
+        border-radius: 16px;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+      }
+
+      .navlinks a {
+        padding: 8px 11px;
+        font-size: .9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap topnav">
+      <a class="brand" href="/">⚡ FF <span>SENSI PRO</span></a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/premium.html">👑 Premium</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="eyebrow">FF SENSI PRO • WEBSITE RULES</div>
+      <h1>Terms &amp; Conditions</h1>
+      <p>
+        Everything you need to know about using our Free Fire
+        sensitivity generator and optional Premium features.
+      </p>
+    </section>
+
+    <article class="panel">
+
+      <p class="updated">Last updated: November 23, 2026</p>
+
+      <p class="intro">
+        Welcome to <strong>FF Sensi Pro</strong>, available at
+        <a href="https://ffsensipro.com/">ffsensipro.com</a>.
+        These Terms &amp; Conditions explain the rules for
+        accessing and using our website and services.
+      </p>
+
+      <div class="highlight">
+        <strong>Built for Free Fire players</strong>
+        <p>
+          FF Sensi Pro helps players explore sensitivity
+          recommendations based on their device and play style.
+          Our settings are starting points for experimentation,
+          not guaranteed gameplay results.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By accessing or using FF Sensi Pro, you agree to
+          these Terms &amp; Conditions. If you do not agree,
+          please discontinue use of the website.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>2. About Our Service</h2>
+        <p>
+          FF Sensi Pro is an independent online utility
+          that generates suggested sensitivity settings
+          for Free Fire players.
+        </p>
+        <p>
+          Recommendations may include General, Red Dot,
+          2X Scope, 4X Scope, Sniper Scope, Free Look,
+          Fire Button Size and optional DPI values.
+        </p>
+        <p>
+          Results are based on the device details and
+          preferences submitted through the generator.
+          Actual gameplay performance varies by player,
+          device, game version and personal preference.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>3. Free Sensitivity Generator</h2>
+        <p>
+          Our free generator allows visitors to request
+          suggested sensitivity settings without creating
+          an account.
+        </p>
+        <p>
+          Some website features may involve optional
+          interaction with external platforms, such as
+          visiting our TikTok profile before viewing results.
+        </p>
+        <p>
+          We may update the generator, available device
+          options or recommendation methods over time.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>4. Accuracy of Recommendations</h2>
+        <p>
+          FF Sensi Pro provides estimated sensitivity
+          recommendations for informational and
+          entertainment purposes.
+        </p>
+        <p>
+          We do not guarantee headshots, improved accuracy,
+          higher ranks, competitive success or any
+          particular gaming outcome.
+        </p>
+        <p>
+          Users should test recommendations gradually
+          in-game and adjust them according to their
+          own comfort and device performance.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>5. Device Settings and DPI</h2>
+        <p>
+          Some recommendations may include optional
+          DPI or display-density values.
+        </p>
+        <p>
+          Changing system display settings can affect
+          how your entire device looks and behaves.
+          You are responsible for deciding whether
+          to apply any recommended settings.
+        </p>
+        <p>
+          We recommend keeping a record of your
+          original settings before making changes.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>6. Premium Sensi</h2>
+        <p>
+          FF Sensi Pro may offer additional Premium
+          sensitivity recommendations when the
+          Premium service is available.
+        </p>
+        <p>
+          The website currently displays a price of
+          <strong>€4.99 per Premium generation</strong>.
+          Any final purchase price and applicable taxes
+          should be confirmed during checkout.
+        </p>
+        <p>
+          Premium access, when enabled, is intended
+          to unlock the purchased generation after
+          successful payment verification.
+        </p>
+        <p>
+          Premium recommendations are also estimates
+          and do not guarantee specific gameplay results.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>7. Payments and Refunds</h2>
+        <p>
+          If Premium purchases become available,
+          payments may be processed by an external
+          checkout provider such as Lemon Squeezy.
+        </p>
+        <p>
+          Payment processing, transaction confirmation
+          and applicable checkout terms may be handled
+          by the payment provider.
+        </p>
+        <p>
+          If you experience a payment problem or do
+          not receive access to a purchased Premium
+          generation, please contact us through our
+          <a href="/contact.html">Contact Us</a> page.
+        </p>
+        <p>
+          Refund requests will be reviewed according
+          to the applicable purchase terms and
+          consumer protection laws. Nothing in these
+          Terms limits rights that cannot legally
+          be excluded.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>8. Acceptable Use</h2>
+        <p>
+          You agree to use FF Sensi Pro responsibly.
+          You must not:
+        </p>
+        <ul>
+          <li>Attempt to damage, disrupt or overload the website.</li>
+          <li>Use automated requests to abuse the generator.</li>
+          <li>Attempt unauthorized access to website systems.</li>
+          <li>Use the website for fraudulent or unlawful activities.</li>
+          <li>Misrepresent our services as official game features.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>9. Independent Website</h2>
+        <p>
+          FF Sensi Pro is an independent fan-oriented
+          gaming utility.
+        </p>
+        <p>
+          It is not affiliated with, endorsed by or
+          sponsored by Garena or Free Fire.
+          All third-party game names and trademarks
+          belong to their respective owners.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>10. External Websites</h2>
+        <p>
+          Our website may contain links to external
+          services, including TikTok, advertising
+          partners and payment providers.
+        </p>
+        <p>
+          We are not responsible for the content,
+          availability or policies of websites
+          operated by third parties.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>11. Website Availability</h2>
+        <p>
+          We aim to keep FF Sensi Pro accessible
+          and functioning properly, but the website
+          may occasionally be unavailable due to
+          maintenance, technical problems or
+          third-party service interruptions.
+        </p>
+        <p>
+          We may modify, suspend or discontinue
+          features when necessary.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>12. Intellectual Property</h2>
+        <p>
+          The original website design, text,
+          branding and generator implementation
+          are part of FF Sensi Pro, except for
+          third-party content and trademarks.
+        </p>
+        <p>
+          You may use generated recommendations
+          for your own gameplay. You must not
+          falsely claim ownership of our website
+          or impersonate FF Sensi Pro.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>13. Limitation of Liability</h2>
+        <p>
+          FF Sensi Pro provides recommendations
+          on an as-available basis.
+          To the extent permitted by applicable law,
+          we are not responsible for losses caused
+          by reliance on estimated settings,
+          device configuration changes or
+          interruptions outside our reasonable control.
+        </p>
+        <p>
+          This section does not exclude any
+          liability or consumer rights that
+          cannot legally be limited.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>14. Privacy</h2>
+        <p>
+          Information about website data practices,
+          advertising and cookies is available in
+          our <a href="/privacy.html">Privacy Policy</a>
+          and <a href="/cookies.html">Cookie Policy</a>.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>15. Changes to These Terms</h2>
+        <p>
+          We may revise these Terms &amp; Conditions
+          as our website and services evolve.
+          The latest version will be published
+          on this page with an updated date.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>16. Contact Us</h2>
+        <p>
+          If you have questions about these terms,
+          our services or a Premium purchase,
+          please visit our
+          <a href="/contact.html">Contact Us</a> page.
+        </p>
+      </div>
+
+    </article>
+
+    <div style="text-align:center">
+      <a class="back-home" href="/">⚡ BACK TO SENSI GENERATOR</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/cookies.html">Cookie Policy</a>
+      </nav>
+      <p>© 2026 FF SENSI PRO. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

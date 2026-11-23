@@ -162,10 +162,13 @@ export async function onRequestPost(context) {
     );
 
     if (!brevoResponse.ok) {
-      console.error(
-        "Brevo email request failed:",
-        brevoResponse.status
-      );
+  const brevoError = await brevoResponse.text();
+
+  console.error(
+    "Brevo email request failed:",
+    brevoResponse.status,
+    brevoError
+  );
 
       return json({
         success: false,
